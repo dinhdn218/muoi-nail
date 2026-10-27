@@ -26,6 +26,7 @@ img{max-width:100%}
   --cuff-rib:#4F3443;
   --nail-edge:rgba(70,20,35,.18);
   --gloss:#FFFFFF;
+  --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%232A1720' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
   --live:#E2334F;
   --polish:#E2334F;
   --shadow:0 1px 2px rgba(42,23,32,.06),0 14px 34px -14px rgba(42,23,32,.22);
@@ -37,7 +38,7 @@ img{max-width:100%}
   :root:not([data-theme="light"]){
     --bg:#161013;--surface:#20171B;--ink:#F7EBEF;--muted:#B8A2AB;--line:#382A30;--soft:#2A1E24;
     --accent:#FF5872;--accent-ink:#1A0C11;--band-bg:#F7EBEF;--band-fg:#161013;--cap:#0D090B;
-    --ok:#5ED39C;--ok-soft:#173527;--idle:#A08F96;--idle-soft:#2C2226;--danger:#FF7686;
+    --ok:#5ED39C;--ok-soft:#173527;--idle:#A08F96;--idle-soft:#2C2226;--danger:#FF7686;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F7EBEF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
     --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.65);
     color-scheme:dark;
   }
@@ -45,7 +46,7 @@ img{max-width:100%}
 :root[data-theme="dark"]{
   --bg:#161013;--surface:#20171B;--ink:#F7EBEF;--muted:#B8A2AB;--line:#382A30;--soft:#2A1E24;
   --accent:#FF5872;--accent-ink:#1A0C11;--band-bg:#F7EBEF;--band-fg:#161013;--cap:#0D090B;
-  --ok:#5ED39C;--ok-soft:#173527;--idle:#A08F96;--idle-soft:#2C2226;--danger:#FF7686;
+  --ok:#5ED39C;--ok-soft:#173527;--idle:#A08F96;--idle-soft:#2C2226;--danger:#FF7686;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F7EBEF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
   --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.65);
   color-scheme:dark;
 }
@@ -325,8 +326,10 @@ h2{font-family:var(--font-display);font-weight:600;font-size:clamp(1.75rem,3.6vw
 .field label,.field legend{font-size:.8rem;font-weight:600;padding:0}
 .field input,.field select{font:inherit;font-size:.96rem;height:48px;padding:0 14px;line-height:1.2;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0;transition:border-color .2s}
 .field input:focus,.field select:focus{border-color:var(--ink);outline:none}
-.field input[type="date"]{-webkit-appearance:none;appearance:none;display:flex;align-items:center}
+.field select{-webkit-appearance:none;appearance:none;padding-right:46px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 16px center;background-size:16px 16px;text-overflow:ellipsis;cursor:pointer}
+.field input[type="date"]{-webkit-appearance:none;appearance:none;padding-right:16px;cursor:pointer}
 .field input[type="date"]::-webkit-date-and-time-value{text-align:left}
+.field input[type="date"]::-webkit-calendar-picker-indicator{margin:0;padding:0;width:16px;height:16px;cursor:pointer;opacity:.85}
 .field input[aria-invalid="true"]{border-color:var(--danger)}
 .help{font-size:.8rem;color:var(--muted)}
 .err{font-size:.8rem;color:var(--danger);font-weight:500}
