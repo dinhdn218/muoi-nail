@@ -312,11 +312,13 @@ h2{font-family:var(--font-display);font-weight:600;font-size:clamp(1.75rem,3.6vw
 .form-card{background:var(--surface);border-radius:var(--r-lg);padding:clamp(20px,3.2vw,36px);box-shadow:var(--shadow)}
 .fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 @media (max-width:560px){.fgrid{grid-template-columns:1fr}}
-.field{display:grid;gap:6px;min-width:0}
+.field{display:grid;gap:6px;min-width:0;align-content:start}
 .field.full{grid-column:1/-1}
 .field label,.field legend{font-size:.8rem;font-weight:600;padding:0}
-.field input,.field select{font:inherit;font-size:.96rem;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0;transition:border-color .2s}
+.field input,.field select{font:inherit;font-size:.96rem;height:48px;padding:0 14px;line-height:1.2;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0;transition:border-color .2s}
 .field input:focus,.field select:focus{border-color:var(--ink);outline:none}
+.field input[type="date"]{-webkit-appearance:none;appearance:none;display:flex;align-items:center}
+.field input[type="date"]::-webkit-date-and-time-value{text-align:left}
 .field input[aria-invalid="true"]{border-color:var(--danger)}
 .help{font-size:.8rem;color:var(--muted)}
 .err{font-size:.8rem;color:var(--danger);font-weight:500}
