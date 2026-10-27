@@ -72,7 +72,15 @@ button{font:inherit;color:inherit}
 .links{display:flex;gap:2px;margin-left:auto}
 .links a{padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.92rem;transition:background-color .2s}
 .links a:hover{background:var(--soft)}
-@media (max-width:920px){.links{display:none}.top .btn{margin-left:auto}}
+.theme-btn{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;padding:0;transition:border-color .2s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.theme-btn:hover{border-color:var(--ink);transform:rotate(-14deg)}
+.theme-btn + .btn{margin-left:-8px}
+.theme-btn svg{grid-area:1/1;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:opacity .35s,transform .55s cubic-bezier(.3,1.5,.5,1)}
+.theme-btn .i-moon{fill:currentColor;stroke:none}
+.theme-btn:not([data-mode="dark"]) .i-sun{opacity:0;transform:rotate(90deg) scale(.4)}
+.theme-btn[data-mode="dark"] .i-moon{opacity:0;transform:rotate(-90deg) scale(.4)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+@media (max-width:920px){.links{display:none}.theme-btn{margin-left:auto}}
 @media (max-width:420px){.logo small{display:none}}
 
 /* ---------- Buttons ---------- */

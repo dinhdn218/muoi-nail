@@ -14,7 +14,8 @@ Website concept cho một thương hiệu nail đại chúng, phong cách lifest
 - **Thẻ Mười:** thẻ tích dấu, lần thứ 10 miễn phí. Các dấu được đóng lần lượt khi cuộn tới.
 - **Chi nhánh:** trạng thái mở cửa tính theo giờ Việt Nam.
 - **Đặt lịch:** chọn dịch vụ, màu, chi nhánh, ngày và khung giờ. Khung giờ đã qua tự khóa, số điện thoại được kiểm tra. Bản demo chỉ hiện màn hình xác nhận, không gửi dữ liệu đi đâu.
-- Hiển thị tốt trên điện thoại, có giao diện sáng và tối, tôn trọng cài đặt giảm chuyển động của hệ điều hành.
+- Hiển thị tốt trên điện thoại, tôn trọng cài đặt giảm chuyển động của hệ điều hành.
+- **Giao diện sáng/tối:** mặc định theo thiết bị. Nút mặt trời/mặt trăng trên thanh menu đổi chế độ bằng hiệu ứng lan tròn và nhớ lựa chọn cho lần sau (lưu trong `localStorage` với khóa `muoi-theme`; xóa khóa này để quay lại theo thiết bị).
 
 Không dùng framework hay bước build. Chỉ có HTML, CSS và JavaScript thuần, font lấy từ Google Fonts (Unbounded và Be Vietnam Pro).
 

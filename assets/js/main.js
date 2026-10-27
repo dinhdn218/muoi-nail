@@ -531,6 +531,42 @@
     stIO.observe(stage);
   }
 
+  /* ---------- Theme toggle ---------- */
+  (function(){
+    var root = document.documentElement, btn = $('#theme-toggle'), KEY = 'muoi-theme';
+    if (!btn) return;
+    var mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+    function current(){
+      var t = root.getAttribute('data-theme');
+      return (t === 'dark' || t === 'light') ? t : (mq && mq.matches ? 'dark' : 'light');
+    }
+    function sync(){
+      var t = current(), label = t === 'dark' ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối';
+      btn.setAttribute('data-mode', t); btn.setAttribute('aria-label', label); btn.title = label;
+    }
+    function apply(t){
+      root.setAttribute('data-theme', t);
+      try { localStorage.setItem(KEY, t); } catch(e) {}
+      sync();
+    }
+    btn.addEventListener('click', function(){
+      var next = current() === 'dark' ? 'light' : 'dark';
+      if (reduce || !document.startViewTransition){ apply(next); return; }
+      var r = btn.getBoundingClientRect(), x = r.left + r.width/2, y = r.top + r.height/2;
+      var end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      try {
+        var vt = document.startViewTransition(function(){ apply(next); });
+        vt.ready.then(function(){
+          root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)', 'circle('+end+'px at '+x+'px '+y+'px)']},
+            {duration:600, easing:'cubic-bezier(.2,.8,.2,1)', pseudoElement:'::view-transition-new(root)'});
+        }).catch(function(){});
+      } catch(e) { apply(next); }
+    });
+    if (mq){ if (mq.addEventListener) mq.addEventListener('change', sync); else if (mq.addListener) mq.addListener(sync); }
+    if ('MutationObserver' in window) new MutationObserver(sync).observe(root, {attributes:true, attributeFilter:['data-theme']});
+    sync();
+  })();
+
   /* ---------- Init ---------- */
   buildHand();
   buildControls();
